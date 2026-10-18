@@ -1,0 +1,476 @@
+```html
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ለ Hagiቲ ❤️ - የፍቅር እና የሰላም ደብዳቤ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :root {
+    --black: #050407;
+    --dark-card: rgba(18, 12, 22, 0.72);
+    --red: #d61c38;
+    --red-glow: #ff2a55;
+    --gold: #f3c649;
+    --gold-glow: #ffe699;
+    --text: #f8f9fa;
+    --muted: #a0a0ab;
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    font-family: 'Noto Sans Ethiopic', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Ambient Glowing Backgrounds */
+  .bg-glow-1 {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(214, 28, 56, 0.22) 0%, transparent 70%);
+    z-index: -2;
+    pointer-events: none;
+    animation: floatGlow 14s ease-in-out infinite alternate;
+  }
+
+  .bg-glow-2 {
+    position: fixed;
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(243, 198, 73, 0.15) 0%, transparent 70%);
+    z-index: -2;
+    pointer-events: none;
+    animation: floatGlow 18s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes floatGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(5%, 5%) scale(1.1); }
+  }
+
+  /* Floating hearts background canvas effect */
+  .hearts-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .heart-float {
+    position: absolute;
+    color: rgba(214, 28, 56, 0.35);
+    animation: floatUp linear infinite;
+    bottom: -50px;
+    user-select: none;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    15% { opacity: 0.8; }
+    85% { opacity: 0.8; }
+    100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Text & Typography Highlights */
+  .love-highlight {
+    color: #ffb3c1;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(255, 42, 85, 0.7);
+  }
+
+  .gold-highlight {
+    color: var(--gold);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(243, 198, 73, 0.6);
+  }
+
+  .title-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #ffe3e8 40%, var(--red-glow) 75%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glassmorphism Card Style */
+  .glass-card {
+    background: var(--dark-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-top: 1px solid rgba(255, 42, 85, 0.35);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Custom Buttons */
+  .btn-romantic {
+    background: linear-gradient(135deg, rgba(214, 28, 56, 0.85), rgba(138, 10, 31, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(214, 28, 56, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .btn-romantic:hover, .btn-romantic:active {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(255, 42, 85, 0.7);
+    border-color: var(--gold);
+  }
+
+  /* Scroll Reveal Animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Pulse Animation */
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    45% { transform: scale(1); }
+    60% { transform: scale(1.08); }
+  }
+
+  .pulse-heart {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+
+  /* Audio Floating Control Button */
+  .music-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+  }
+
+  .music-btn {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--red-glow), #900a20);
+    border: 2px solid var(--gold);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(214, 28, 56, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .music-btn.playing {
+    animation: musicPulse 1.8s infinite;
+  }
+
+  @keyframes musicPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(255, 42, 85, 0.6), 0 0 0 0 rgba(243, 198, 73, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(255, 42, 85, 0.9), 0 0 0 12px rgba(243, 198, 73, 0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ambient Glows -->
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
+
+<!-- Dynamic Animated Hearts Background -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- HEADER / HERO SECTION -->
+<header class="min-h-screen flex flex-col justify-center items-center text-center px-4 py-16 relative">
+  <div class="text-4xl md:text-5xl mb-4 pulse-heart">👑</div>
+  <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-wider title-gradient mb-3 drop-shadow-2xl">
+    Hagiቲ
+  </h1>
+  <div class="flex items-center gap-4 my-4 opacity-80">
+    <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-red-500"></div>
+    <span class="text-red-400 text-lg">❤</span>
+    <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-red-500"></div>
+  </div>
+  <p class="max-w-xl text-lg sm:text-xl text-gray-300 font-light leading-relaxed px-2">
+    ለእኔ የሕይወቴ ብርሃን ለሆነችው <span class="love-highlight">ጨረቃዬ</span>፣ ጥንካሬዬ ለሆነችው <span class="gold-highlight">እናቴ</span> እና ብቸኛ የልቤ <span class="love-highlight">ፍቅሬ</span> የተዘጋጀ ልዩ ስጦታ።
+  </p>
+
+  <button onclick="openModal()" class="mt-10 btn-romantic text-white font-bold px-8 py-4 rounded-full text-lg flex items-center gap-3">
+    <span>💝 የልቤን ምስጢር ክፈች</span>
+  </button>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 space-y-24 pb-28">
+
+  <!-- LOVE LETTER SECTION -->
+  <section class="reveal">
+    <div class="text-center mb-8">
+      <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold">የ<em>ፍቅር</em> እና የ<em>እውነቴ</em> ደብዳቤ</h2>
+      <p class="text-gray-400 text-sm mt-2">ከጥልቅ ልቤ የተቀዳ ለ Hagiቲ</p>
+    </div>
+
+    <div class="glass-card p-8 sm:p-10 relative">
+      <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-tr from-red-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-red-500/50 text-xl">
+        ❤
+      </div>
+
+      <div class="space-y-6 text-gray-200 text-base sm:text-lg leading-loose text-right">
+        <p>
+          ውድና የልቤ ንግሥት <span class="love-highlight">Hagiቲ</span>… ❤️
+        </p>
+        <p>
+          "ጊዜ አልሰጠሽኝም" እያልኩ ደጋግሜ የምጨቀጭቅሽ ወይም የምጎተጉትሽ ለምን እንደሆነ ታውቂያለሽ? ሰዓት ወይም ደቂቃ ቆጥሬ ላስጨንቅሽ ፈልጌ አይደለም… ከአንቺ ጋር የምናሳልፋት እያንዳንዷ ሰከንድ ህይወቴን በደስታ ስለምትሞላው፣ ከአንቺ ርቄ ስሆን ግን ዓለሜ ሙሉ ስለማይሆንልኝ ነው!
+        </p>
+        <p>
+          ላንቺ ያለኝ ፍቅርና ጉጉት አቅም ሲያጣኝ ነው "ጊዜ አልሰጠሽኝም" በሚል ቅሬታ በሚመስል ቃል የሚወጣው። አንቺ ለእኔ የጨለማዬ ብርሃን <span class="love-highlight">ጨረቃዬ</span> ነሽ፤ ህይወቴን በእንክብካቤና በጥበብ የምትሞይው <span class="gold-highlight">እናቴ</span> ነሽ፤ የልቤ ብቸኛ <span class="love-highlight">ፍቅሬ</span> ነሽ።
+        </p>
+        <p>
+          ሥራሽ፣ ውሎሽ እና ሀላፊነትሽ ለእኔም ትልቅ ቦታ አላቸው። እኔ የምፈልገው አንቺን ማስጨነቅ ሳይሆን፣ የቱንም ያህል ብንጣደፍ እንኳ ለሁለታችን ትንሽ የሰላም እና የፍቅር አየር የምንተፍስበት የራሳችን ጊዜ እንድኖረን ነው።
+        </p>
+        <div class="pt-4 text-left font-serif text-xl text-red-400 italic">
+          — ሁልጊዜም የአንቺው ብቻ ❤️
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSICAL MUSIC & PEACE SECTION -->
+  <section class="reveal">
+    <div class="glass-card p-8 sm:p-10 border-l-4 border-l-yellow-500">
+      <div class="flex flex-col sm:flex-row items-center gap-6">
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-red-500/20 border border-yellow-500/40 flex items-center justify-center text-4xl shrink-0">
+          🎻
+        </div>
+        <div class="text-right sm:text-right space-y-2">
+          <h3 class="text-2xl font-bold text-white">ክላሲካል የሰላም ሙዚቃ (Sound)</h3>
+          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+            ይህ ድህረ ገጽ ለ Hagiቲ ልብ እረፍት የሚሰጥ ውብ የፒያኖ እና የቫዮሊን ክላሲካል አውዲዮ (Classical Piece) ታጥቋል። ከታች በስተቀኝ ያለችውን <span class="gold-highlight">🎵 የሙዚቃ ቁልፍ</span> በመንካት ሙዚቃውን ከፍተሽ ደብዳቤውን በደስታ አንቢው።
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 PRACTICAL SOLUTIONS SECTION -->
+  <section class="reveal">
+    <div class="text-center mb-10">
+      <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold">ይህንን ነገር <em>እንዴት እንፍታው?</em></h2>
+      <p class="text-gray-400 text-sm mt-2">የፍቅራችንና የጊዜያችን 3 ውብ መፍትሔዎች 🌙✨</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6">
+      <!-- Solution 1 -->
+      <div class="glass-card p-6 sm:p-8 border-r-4 border-r-red-500 hover:translate-x-2 transition-transform duration-300">
+        <div class="flex items-start gap-4">
+          <div class="text-2xl font-bold font-serif text-yellow-400">01</div>
+          <div class="space-y-2 text-right">
+            <h4 class="text-xl font-bold text-white">ቀናችንን አንጣላበት</h4>
+            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+              በቀን ውስጥ በሥራሽ እና በውሎሽ ላይ በነፃነት አተኩሪ፤ እኔም ሥራዬን ልስራ። ያለአስፈላጊ ስጋት ሙሉ ቀናችንን በደስታ እናሳልፍ።
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution 2 -->
+      <div class="glass-card p-6 sm:p-8 border-r-4 border-r-yellow-500 hover:translate-x-2 transition-transform duration-300">
+        <div class="flex items-start gap-4">
+          <div class="text-2xl font-bold font-serif text-yellow-400">02</div>
+          <div class="space-y-2 text-right">
+            <h4 class="text-xl font-bold text-white">የቋሚ ሰዓት ስምምነት</h4>
+            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+              በቀን ውስጥ (ምናልባት ማታ ከመተኛታችን በፊት 15 ወይም 20 ደቂቃ ብቻ ቢሆን እንኳ) ሙሉ ትኩረታችንን ለሁለታችን ብቻ የምንሰጥበት ልዩ የፍቅር ሰዓት እንመድብ።
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution 3 -->
+      <div class="glass-card p-6 sm:p-8 border-r-4 border-r-pink-500 hover:translate-x-2 transition-transform duration-300">
+        <div class="flex items-start gap-4">
+          <div class="text-2xl font-bold font-serif text-yellow-400">03</div>
+          <div class="space-y-2 text-right">
+            <h4 class="text-xl font-bold text-white">አጭር ድምፅ (Voice Note)</h4>
+            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+              በቀን ውስጥ ጥቂት ባረፈሽበት ሰዓት የምትልኪልኝ የ10 ሰከንድ አጭር ድምፅሽ እንኳን ቀኔን ሙሉ በብርሃን ያበራልኛል።
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REASONS WHY I LOVE HER -->
+  <section class="reveal">
+    <div class="text-center mb-10">
+      <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold">ለምን <em>አብዝቼ</em> እወድሻለሁ?</h2>
+      <p class="text-gray-400 text-sm mt-2">ልቤ ለጨረቃው የሚናገራቸው እውነቶች</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="glass-card p-6 text-right space-y-2">
+        <span class="text-red-400 text-xl">✦</span>
+        <h5 class="text-lg font-bold text-white">ብርሃኔ ስለሆንሽ</h5>
+        <p class="text-gray-400 text-sm leading-relaxed">የኔ <span class="love-highlight">ጨረቃ</span> ጨለማዬን ሁሉ በውብ ፈገግታሽ ታበሪዋለሽ።</p>
+      </div>
+
+      <div class="glass-card p-6 text-right space-y-2">
+        <span class="text-yellow-400 text-xl">✦</span>
+        <h5 class="text-lg font-bold text-white">እናቴና እረፍቴ ስለሆንሽ</h5>
+        <p class="text-gray-400 text-sm leading-relaxed">እንደ <span class="gold-highlight">እናቴ</span> በጥበብና በእንክብካቤ ልቤን በሰላም ስለምትሞይው።</p>
+      </div>
+
+      <div class="glass-card p-6 text-right space-y-2">
+        <span class="text-pink-400 text-xl">✦</span>
+        <h5 class="text-lg font-bold text-white">እውነተኛ ፍቅሬ ስለሆንሽ</h5>
+        <p class="text-gray-400 text-sm leading-relaxed">በምድር ላይ የልቤን በር ሙሉ በሙሉ የከፈትኩት ላንቺ ለ <span class="love-highlight">Hagiቲ</span> ብቻ ነው።</p>
+      </div>
+
+      <div class="glass-card p-6 text-right space-y-2">
+        <span class="text-red-400 text-xl">✦</span>
+        <h5 class="text-lg font-bold text-white">ሰላሜ ስለሆንሽ</h5>
+        <p class="text-gray-400 text-sm leading-relaxed">ድምፅሽን በሰማሁ ቁጥር በልቤ ውስጥ ያለው ማበልበል ሁሉ ፀጥ ይላል።</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING SECTION -->
+  <section class="reveal text-center pt-8">
+    <div class="inline-block text-6xl pulse-heart mb-6">💖</div>
+    <h2 class="font-serif text-3xl sm:text-4xl text-white font-bold mb-4">እወድሻለሁ የኔ Hagiቲ</h2>
+    <p class="text-gray-300 max-w-md mx-auto text-base leading-relaxed">
+      የጭቅጭቅ ሳይሆን የሰላምሽና የደስታሽ ምንጭ መሆን ነው የምፈልገው። ፍቅሬን በደንብ ስለምትረጂልኝ አመሰግናለሁ!
+    </p>
+  </section>
+
+</main>
+
+<!-- INTERACTIVE MODAL -->
+<div id="loveModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+  <div class="glass-card p-8 max-w-md w-full text-center relative border-2 border-red-500/40 shadow-2xl animate-popIn">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
+    <div class="text-5xl mb-4 pulse-heart">👑</div>
+    <h3 class="font-serif text-2xl text-white font-bold mb-4">ለ Hagiቲ የተሰጠ ቃል</h3>
+    <p class="text-gray-200 text-base leading-relaxed mb-8 text-right">
+      የኔ <span class="love-highlight">Hagiቲ</span>… አንቺ ለእኔ የልቤ ንግሥት፣ የሌሊት <span class="love-highlight">ጨረቃዬ</span>፣ ጥንካሬዬ <span class="gold-highlight">እናቴ</span> እና ብቸኛ የሕይወቴ <span class="love-highlight">ፍቅር</span> ነሽ። በጋራ በሰላምና በፍቅር ረጅም ዘመን እንኖራለን! ❤️
+    </p>
+    <button onclick="closeModal()" class="btn-romantic text-white font-bold px-8 py-3 rounded-full text-base w-full">
+      አመሰግናለሁ የኔ ፍቅር ❤️
+    </button>
+  </div>
+</div>
+
+<!-- AUDIO PLAYER FLOATING WIDGET (Classical Piano Audio Track) -->
+<div class="music-widget">
+  <button id="musicBtn" class="music-btn" title="Classical Music (ON/OFF)">
+    <span id="musicIcon" class="text-xl">🎵</span>
+  </button>
+</div>
+
+<!-- High quality classical piano audio -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-classical-piano-112199.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a731d7.mp3?filename=soft-piano-melodic-classical-10702.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Dynamic Floating Hearts Engine
+  (function createHearts() {
+    const bg = document.getElementById('heartsBg');
+    const symbols = ['❤', '♥', '✨', '💕', '🌸'];
+    const count = window.innerWidth < 640 ? 18 : 32;
+
+    for (let i = 0; i < count; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart-float';
+      heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (12 + Math.random() * 20) + 'px';
+      heart.style.animationDuration = (8 + Math.random() * 10) + 's';
+      heart.style.animationDelay = (Math.random() * 8) + 's';
+      bg.appendChild(heart);
+    }
+  })();
+
+  // Modal Dialog Handlers
+  function openModal() {
+    const modal = document.getElementById('loveModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('loveModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  document.getElementById('loveModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Classical Sound Player Controls
+  const musicBtn = document.getElementById('musicBtn');
+  const musicIcon = document.getElementById('musicIcon');
+  const bgMusic = document.getElementById('bgMusic');
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicIcon.textContent = '🎵';
+      musicBtn.classList.remove('playing');
+      isPlaying = false;
+    } else {
+      bgMusic.volume = 0.45;
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          musicIcon.textContent = '⏸';
+          musicBtn.classList.add('playing');
+          isPlaying = true;
+        }).catch(err => {
+          console.log("Audio autoplay prevented by browser interaction policy.");
+        });
+      }
+    }
+  }
+
+  musicBtn.addEventListener('click', toggleMusic);
+
+  // Scroll Reveal Observer
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>
+```
